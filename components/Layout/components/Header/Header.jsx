@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import TopBar from "../TopBar/TopBar";
 import TopSearch from "../TopSearch/TopSearch";
 
@@ -38,9 +40,9 @@ export default function Header() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="about.html">
-                    About Us
-                  </a>
+                  <Link href="/about" prefetch={false}>
+                    <a className="nav-link">About Us</a>
+                  </Link>
                 </li>
                 <li className="dropdown megamenu-fw">
                   <a
