@@ -5,7 +5,7 @@ const renderCategories = (categories) => {
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
     const categoryComponent = (
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" key={i}>
         <div class="shop-cat-box">
           <img class="img-fluid" src={`images/${category.image}`} alt="" />
           <a class="btn hvr-hover" href="#">
