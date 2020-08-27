@@ -1,8 +1,11 @@
 import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
+import { addToCart } from "../../actions/cart";
 
 const renderProducts = (products) => {
+  const dispatch = useDispatch();
+
   return Object.values(products).map((product) => {
     return (
       <div
@@ -51,7 +54,7 @@ const renderProducts = (products) => {
                   </a>
                 </li>
               </ul>
-              <a className="cart" href="#">
+              <a className="cart" onClick={() => dispatch(addToCart(product))}>
                 Add to Cart
               </a>
             </div>
