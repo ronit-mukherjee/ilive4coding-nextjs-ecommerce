@@ -1,5 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProductQuantity, deleteProduct } from "../actions/cart";
 
 const calculateProductsTotal = (products) =>
   products.reduce(
@@ -9,6 +10,7 @@ const calculateProductsTotal = (products) =>
 
 export default function cart() {
   const cartProducts = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   return (
     <div className="cart-box-main">
@@ -31,7 +33,7 @@ export default function cart() {
                   <tbody>
                     {cartProducts.map((product) => {
                       return (
-                        <tr>
+                        <tr key={product.id}>
                           <td className="thumbnail-img">
                             <a href="#">
                               <img
@@ -52,10 +54,15 @@ export default function cart() {
                           <td className="quantity-box">
                             <input
                               type="number"
-                              size="4"
-                              value={product.quantity}
+                              defaultValue={product.quantity}
                               min="0"
                               step="1"
+                              onChange={(e) => {
+                                console.log("Here");
+                                dispatch(
+                                  updateProductQuantity(product, e.target.value)
+                                );
+                              }}
                               className="c-input-text qty text"
                             />
                           </td>
@@ -66,7 +73,13 @@ export default function cart() {
                             </p>
                           </td>
                           <td className="remove-pr">
-                            <a href="#">
+                            <a
+                              role="button"
+                              onClick={dispatch.bind(
+                                null,
+                                deleteProduct(product.id)
+                              )}
+                            >
                               <i className="fas fa-times"></i>
                             </a>
                           </td>

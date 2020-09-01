@@ -10,6 +10,7 @@ const renderProducts = (products) => {
     return (
       <div
         className={`col-lg-3 col-md-6 special-grid ${product.tags.join(" ")}`}
+        key={product.id}
       >
         <div className="products-single fix">
           <div className="box-img-hover">
