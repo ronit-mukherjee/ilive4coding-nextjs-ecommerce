@@ -2,18 +2,25 @@ import React, { useMemo } from "react";
 import FeaturedProducts from "../../components/FeaturedProducts/FeaturedProducts";
 import { useSelector } from "react-redux";
 
-export async function getServerSideProps(context) {
-  const { pid } = context.query;
+export async function getStaticPaths() {
+  const paths = [{ params: { pid: "100" } }, { params: { pid: "101" } }];
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps(context) {
+  const { pid } = context.params;
   return {
     props: { pid },
   };
 }
 
 export default function ProductDetail({ pid }) {
+  console.log("PID", pid);
   const productDetails = useSelector((state) =>
     useMemo(() => state.products[pid], [pid, state.products])
   );
-
+  console.log("productDetails", productDetails);
+  if (!productDetails) return null;
   return (
     <div className="shop-detail-box-main">
       <div className="container">

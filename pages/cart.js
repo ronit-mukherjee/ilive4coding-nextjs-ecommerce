@@ -55,12 +55,14 @@ export default function cart() {
                             <input
                               type="number"
                               defaultValue={product.quantity}
-                              min="0"
+                              min="1"
                               step="1"
                               onChange={(e) => {
-                                console.log("Here");
                                 dispatch(
-                                  updateProductQuantity(product, e.target.value)
+                                  updateProductQuantity(
+                                    product.id,
+                                    e.target.value
+                                  )
                                 );
                               }}
                               className="c-input-text qty text"

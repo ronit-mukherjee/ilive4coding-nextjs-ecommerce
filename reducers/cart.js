@@ -28,16 +28,13 @@ function cartReducer(state = [], action) {
       return productsInCart;
     }
     case UPDATE_PRODUCT_QUANTITY: {
-      const {
-        product: productToUpdate,
-        quantity: quantityToSet = 1,
-      } = action.payload;
+      const { productId, quantity: quantityToSet = 1 } = action.payload;
       const productsInCart = [...state];
 
       for (let i = 0; i < productsInCart.length; i++) {
         const product = productsInCart[i];
 
-        if (product.id === productToUpdate.id) {
+        if (product.id === productId) {
           product.quantity = parseInt(quantityToSet);
           break;
         }

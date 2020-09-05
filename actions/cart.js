@@ -9,10 +9,10 @@ export const addToCart = (product, quantity = 1) => {
   };
 };
 
-export const updateProductQuantity = (product, quantity = 1) => {
+export const updateProductQuantity = (productId, quantity = 1) => {
   return {
     type: UPDATE_PRODUCT_QUANTITY,
-    payload: { product, quantity },
+    payload: { productId, quantity },
   };
 };
 
