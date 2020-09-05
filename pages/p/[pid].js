@@ -15,11 +15,10 @@ export async function getStaticProps(context) {
 }
 
 export default function ProductDetail({ pid }) {
-  console.log("PID", pid);
   const productDetails = useSelector((state) =>
     useMemo(() => state.products[pid], [pid, state.products])
   );
-  console.log("productDetails", productDetails);
+
   if (!productDetails) return null;
   return (
     <div className="shop-detail-box-main">
