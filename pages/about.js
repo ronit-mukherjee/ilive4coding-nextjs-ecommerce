@@ -23,7 +23,7 @@ export default function About() {
           <div className="row">
             <div className="col-lg-6">
               <h2 className="noo-sh-title">
-                We are <span>Amazing Kart</span>
+                We are <span>Flipper Kart</span>
               </h2>
               <p>
                 "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
